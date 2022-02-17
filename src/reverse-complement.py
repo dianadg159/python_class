@@ -1,6 +1,6 @@
 '''
 NAME
-	reverse-complement.py
+	reverse-complement.py 
     
 VERSION
     1.0
@@ -20,7 +20,7 @@ USAGE
     
     example
     
-    % python reverse-complement -i
+    % python reverse-complement -i sequence.txt
 
 '''
 
