@@ -3,7 +3,7 @@ NAME
 	reverse-complement.py 
     
 VERSION
-    2.0
+    1.0
     
 AUTHOR
 	Diana Delgado
