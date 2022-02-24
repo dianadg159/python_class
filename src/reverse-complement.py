@@ -6,7 +6,7 @@ VERSION
     1.0
     
 AUTHOR
-	Diana Delgado
+	Diana Delgado Gutierrez
     
 DESCRIPTION
 	Make the reverse complement of DNA sequence
