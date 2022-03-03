@@ -2,7 +2,7 @@
 
 __Nombre: Diana Delgado Gutiérrez__
 
-*Fecha: 3/02/2022*
+*Fecha: 3/03/2022*
 
 Institución: [LCG](https://www.lcg.unam.mx/)
 
@@ -47,6 +47,7 @@ Tabla 1.
 | imágenes            | `![título](url "leyenda")`  o  `<img src="url" width="x" height="y"/>` |
 
 ## Tema: GITHUB
+ ¡ya puedes usar github!
 
 buenas prácticas:
 
