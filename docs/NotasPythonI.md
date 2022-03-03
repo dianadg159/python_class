@@ -59,3 +59,9 @@ buenas prácticas:
 - Utilizar notaciones o estándares en nombrado.
 - Nombrado adecuado a programas.
 - Organización adecuada del código. Diseñar un directorio de trabajo.
+
+### Sincronizar repositorio local y remoto
+- Se usa `git push origin [URL]` para subir las modificaciones del repositorio local al remoto.
+- Se usa `git pull origin` para bajar las modificaciones del repositorio remoto al local.
+
+:)
