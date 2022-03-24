@@ -9,4 +9,10 @@ Python ya tiene integradas funciones a cada tipo de datos.
     un string es un array. Si no encuentra el string regresa -1
 - .lower() : hace todo el string minúsculas
 - .upper() : hace todo el string mayúsculas
+- .count() : contar repeticiones en una cadena
+- open() para acceder a un archivo
+- .read() : para leer TODO el contenido de un archivo
+- .replace : reemplazar caracteres
+- str() : para que escriba los número en número
+- rstrip() : quita cualquier caracter al final de la cadena, pone por default espacios.
 
