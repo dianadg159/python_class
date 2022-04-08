@@ -1,30 +1,33 @@
-# NAME
-
-# VERSION
-
-
-# AUTOR
-
-
-# DESCRIPTION
+'''
+NAME
+ 
+    
+VERSION
 
 
-# CATEGORY
+AUTOR
 
 
-# USAGE
+DESCRIPTION
 
 
-# ARGUMENTS
+CATEGORY
 
 
-# SOFTWARE REQUIREMENTS
+USAGE
 
 
-# INPUT
+ARGUMENTS
 
-# [files or directories used to run the program and formats]
 
-# OUTPUT
+SOFTWARE REQUIREMENTS
 
-# [file names and formats]
+
+INPUT
+
+ [files or directories used to run the program and formats]
+
+OUTPUT
+
+[file names and formats]
+'''
