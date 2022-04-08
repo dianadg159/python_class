@@ -3,7 +3,7 @@ NAME
     Eliminar adaptador de secuencias
 
 VERSION
-    1.0
+    1.0.1
 
 AUTOR
     Diana Delgado Gutierrez
@@ -54,3 +54,5 @@ secNoAdapt = open("data/4_output_adapters.txt", "w")
 for sec in secuencias:
     secNoAdapt.write(str(sec[14:-1]))
     secNoAdapt.write("\n")
+
+secNoAdapt.close()
