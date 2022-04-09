@@ -13,7 +13,7 @@ DESCRIPTION
     sin unas regiones de la secuencia (adaptadores).
 
 USAGE
-    Ejercicios
+    py src/eliminarAdapt.py
 
 ARGUMENTS
     String
@@ -22,10 +22,10 @@ SOFTWARE REQUIREMENTS
     Python 3.10
 
 INPUT
-    4_input_adapters.txt
+    data/4_input_adapters.txt
 
 OUTPUT
-    4_output_noAdapters.txt
+    results/4_output_noAdapters.txt
 
 '''
 # Crear el archivo de la secuencia.
@@ -48,7 +48,7 @@ secuencias = contenido.readlines()
 contenido.close()
 
 # Crear un archivo output.
-secNoAdapt = open("data/4_output_adapters.txt", "w")
+secNoAdapt = open("results/4_output_adapters.txt", "w")
 
 # Recorrer la lista y eliminar adaptador.
 for sec in secuencias:
