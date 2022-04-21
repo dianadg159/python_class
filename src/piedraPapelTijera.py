@@ -7,9 +7,13 @@
 
 # tijera pierde contra roca
 
-# papel gana al papel
+# papel gana a roca
 
-# papel pierde ante
+# papel pierde ante tijera
+
+# piedra gana ante tijera
+
+# piedra pierde ante papel
 
 # iguales es empate
 
@@ -21,38 +25,24 @@ user_action = input("Enter a choice (rock, paper, scissors): ")
 2. Función aleatoria de la computadora.
 computer_action = random.choice(possible_actions)
 3. comparar los resultados
-    - if (computadora == usuario)
+    - if (computer_action == user_action)
         print("empate")
-    -elif ((computadora = tijera) & (usuario = papel))
+    tijera gana a papel:
+    -elif ((computer_action == tijera) & (user_action == papel))
         print("gana computadora")
-    -elif ((usuario = tijera) & (computadora = papel))
+    papel pierde ante tijera:
+    -elif ((user_action == tijera) & (computer_action == papel))
         print("gana usuario")
-    -elif ((computadora = roca) & (usuario = tijera))
+    roca gana ante tijera:
+    -elif ((computer_action === roca) & (user_action == tijera))
         print("gana computadora")
-    -elif ((usuario = roca) & (computadora = tijera))
+    tijera pierde ante roca:
+    -elif ((user_action == roca) & (computer_action = tijera))
         print("gana usuario")
-    -elif ((computadora = papel) & (usuario = roca))
+    papel gana ante roca:
+    -elif ((computer_action == papel) & (user_action == roca))
         print("gana computadora")
-    -elif ((usuario = papel) & (computadora = roca))
+    roca pierde ante papel:
+    -elif ((user_action == papel) & (computer_action == roca))
         print("gana usuario")
-        
-        
-    Si usuario = roca entonces
-        si computadora = papel
-            Imprimir "computadora gana"
-        de otra manera /computadora = tijeras
-            imprimir "usuario gana" 
-    si usuario = papel entonces
-        si computadora = tijeras
-            Imprimir "computadora gana"
-        de otro modo /computadora = roca
-            imprimir "usuario gana"
-    si usuario = tijeras entonces
-        si computadora = roca
-            imprimir "computadora gana"
-        de otro modo / computadora = papel
-            imprimir "usuario gana"
-convertir todo a minúsculas del input del usuario.
-print(f"\nYou chose {user_action}, computer chose {computer_action}.\n")
-
 '''
