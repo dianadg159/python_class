@@ -3,7 +3,7 @@ NAME
     Juego piedra, papel o tijera
 
 VERSION
-    1.0.1
+    1.1
 
 AUTOR
     Diana Delgado Gutierrez
@@ -35,13 +35,17 @@ import random
 accionesPosibles = ["piedra", "papel", "tijera"]
 
 # Pedir al usuario para su elección.
-print("Elige una opción (piedra, papel, tijera): ")
+print("¡Bienvenidx al juego de piedra, papel o tijera!\n")
+print("Teclea tu nombre: ")
+nombre = input()
+print(f"{nombre}, a la de 3, elige una opción (piedra, papel, tijera): ")
 eleccionUsuario = input()
 eleccionUsuario = eleccionUsuario.lower()
 
 # Elección aleatoria de la computadora.
 eleccionCompu = random.choice(accionesPosibles)
-print(f"La computadora elige: {eleccionCompu}")
+print(f"\nTu elección fue: {eleccionUsuario}")
+print(f"La computadora elige: {eleccionCompu}\n")
 
 # Comparar los resultados.
 # Los dos elegieron lo mismo:
@@ -50,25 +54,25 @@ if (eleccionCompu == eleccionUsuario):
 
 # Papel pierde ante tijera:
 elif ((eleccionCompu == "tijera") & (eleccionUsuario == "papel")):
-    print("Perdiste :( ¡Inténtalo de nuevo!")
+    print(f"Perdiste {nombre} :( ¡Inténtalo de nuevo!")
 # papel gana ante piedra:
 elif ((eleccionCompu == "piedra") & (eleccionUsuario == "papel")):
-    print("¡Ganaste!")
+    print(f"¡Ganaste {nombre}!")
 
 # tijera pierde ante piedra:
 elif ((eleccionCompu == "piedra") & (eleccionUsuario == "tijera")):
-    print("Perdiste :( ¡Inténtalo de nuevo!")
+    print(f"Perdiste {nombre} :( ¡Inténtalo de nuevo!")
 # tijera gana ante papel:
 elif ((eleccionCompu == "papel") & (eleccionUsuario == "tijera")):
-    print("¡Ganaste!")
+    print(f"¡Ganaste {nombre}!")
 
 # piedra pierde ante papel:
 elif ((eleccionCompu == "papel") & (eleccionUsuario == "piedra")):
-    print("Perdiste : ¡Inténtalo de nuevo!")
+    print(f"Perdiste {nombre} :( ¡Inténtalo de nuevo!")
 # piedra gana ante tijera:
 elif ((eleccionCompu == "tijera") & (eleccionUsuario == "piedra")):
-    print("¡Ganaste!")
+    print(f"¡Ganaste {nombre}!")
 
 # Si el usuario escribió mal:
 else:
-    print("Escribiste mal tu elección, intenta de nuevo.")
+    print(f"Escribiste mal tu elección {nombre}, intenta de nuevo.")
