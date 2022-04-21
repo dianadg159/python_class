@@ -39,8 +39,7 @@ print("¡Bienvenidx al juego de piedra, papel o tijera!\n")
 print("Teclea tu nombre: ")
 nombre = input()
 print(f"{nombre}, a la de 3, elige una opción (piedra, papel, tijera): ")
-eleccionUsuario = input()
-eleccionUsuario = eleccionUsuario.lower()
+eleccionUsuario = input().lower()
 
 # Elección aleatoria de la computadora.
 eleccionCompu = random.choice(accionesPosibles)
