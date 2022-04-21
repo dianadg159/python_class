@@ -1,48 +1,65 @@
+'''
+NAME
+    Juego piedra, papel o tijera
 
-# Pedir al usuario su opción
+VERSION
+    1.0
 
-# La computadora obtiene su opción
+AUTOR
+    Diana Delgado Gutierrez
 
-# tijera gana al papel
+DESCRIPTION
+    Un juego donde el usuario puede elegir entre piedra, papel
+    o tijera y jugar con la computadora.
 
-# tijera pierde contra roca
+USAGE
+    py src/piedraPapelTijera.py
 
-# papel gana a roca
+ARGUMENTS
+    String
 
-# papel pierde ante tijera
+SOFTWARE REQUIREMENTS
+    Python 3.10
 
-# piedra gana ante tijera
+INPUT
+    data/4_input_adapters.txt
 
-# piedra pierde ante papel
-
-# iguales es empate
+OUTPUT
+    none
 
 '''
-0. calcular opciones validas.
-possible_actions = ["rock", "paper", "scissors"]
-1. input() al usuario para su opción.
-user_action = input("Enter a choice (rock, paper, scissors): ")
-2. Función aleatoria de la computadora.
-computer_action = random.choice(possible_actions)
-3. comparar los resultados
-    - if (computer_action == user_action)
-        print("empate")
-    tijera gana a papel:
-    -elif ((computer_action == tijera) & (user_action == papel))
-        print("gana computadora")
-    papel pierde ante tijera:
-    -elif ((user_action == tijera) & (computer_action == papel))
-        print("gana usuario")
-    roca gana ante tijera:
-    -elif ((computer_action === roca) & (user_action == tijera))
-        print("gana computadora")
-    tijera pierde ante roca:
-    -elif ((user_action == roca) & (computer_action = tijera))
-        print("gana usuario")
-    papel gana ante roca:
-    -elif ((computer_action == papel) & (user_action == roca))
-        print("gana computadora")
-    roca pierde ante papel:
-    -elif ((user_action == papel) & (computer_action == roca))
-        print("gana usuario")
-'''
+# 0. calcular opciones validas.
+import random
+accionesPosibles = ["piedra", "papel", "tijera"]
+# input() al usuario para su opción.
+print("Elige una opción (piedra, papel, tijera): ")
+eleccionUsuario = input()
+eleccionUsuario = eleccionUsuario.lower()
+# Función aleatoria de la computadora.
+eleccionCompu = random.choice(accionesPosibles)
+print(f"La computadora elige: {eleccionCompu}")
+# comparar los resultados
+# Los dos elegieron lo mismo:
+if (eleccionCompu == eleccionUsuario):
+    print("¡Empate!")
+# tijera gana a papel:
+elif ((eleccionCompu == "tijera") & (eleccionUsuario == "papel")):
+    print("Perdiste :( ¡Inténtalo de nuevo!")
+# papel pierde ante tijera:
+elif ((eleccionCompu == "tijera") & (eleccionUsuario == "papel")):
+    print("¡Ganaste!")
+# piedra gana ante tijera:
+elif ((eleccionCompu == "piedra") & (eleccionUsuario == "tijera")):
+    print("Perdiste :( ¡Inténtalo de nuevo!")
+# tijera pierde ante piedra:
+elif ((eleccionUsuario == "piedra") & (eleccionCompu == "tijera")):
+    print("¡Ganaste!")
+# papel gana ante roca:
+elif ((eleccionCompu == "papel") & (eleccionUsuario == "piedra")):
+    print("Perdiste :( ¡Inténtalo de nuevo!")
+# roca pierde ante papel:
+elif ((eleccionUsuario == "papel") & (eleccionCompu == "piedra")):
+    print("gana usuario")
+# Si el usuario escribió mal:
+else:
+    print("Escribiste mal tu elección, intenta de nuevo.")
