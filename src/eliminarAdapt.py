@@ -41,18 +41,19 @@ archivo.write(linea3)
 archivo.write(linea4)
 archivo.write(linea5)
 archivo.close()
+try:
+    # Leer el archivo línea por línea.
+    contenido = open("data/4_input_adapter.txt", "r")
+    secuencias = contenido.readlines()
+    contenido.close()
 
-# Leer el archivo línea por línea.
-contenido = open("data/4_input_adapters.txt", "r")
-secuencias = contenido.readlines()
-contenido.close()
+    # Crear un archivo output.
+    secNoAdapt = open("results/4_output_adapters.txt", "w")
 
-# Crear un archivo output.
-secNoAdapt = open("results/4_output_adapters.txt", "w")
-
-# Recorrer la lista y eliminar adaptador.
-for sec in secuencias:
-    secNoAdapt.write(str(sec[14:-1]))
-    secNoAdapt.write("\n")
-
-secNoAdapt.close()
+    # Recorrer la lista y eliminar adaptador.
+    for sec in secuencias:
+        secNoAdapt.write(str(sec[14:-1]))
+        secNoAdapt.write("\n")
+    secNoAdapt.close()
+except IOError as ex:
+    print("No se encuentra el archivo: " + ex.filename)
