@@ -1,14 +1,24 @@
 '''
-NAME: Porcentaje de AT y GC
-VERSION: 1
-AUTOR: Diana Delgado Gutierrez
-DESCRIPTION: Programa que calcula el porcentaje de AT y GC con nombre y ruta del archivo input de secuencia.
-USAGE: ejercicio
-ARGUMENTS: string
-SOFTWARE REQUIREMENTS: python 3.10
-INPUT: string
-OUTPUT: string
+NAME: 
+    Porcentaje de AT y GC
+VERSION:
+    1
+AUTOR: 
+    Diana Delgado Gutierrez
+DESCRIPTION: 
+    Programa que calcula el porcentaje de AT y GC con nombre y ruta del archivo input de secuencia.
+USAGE: 
+    ejercicio
+ARGUMENTS: 
+    string
+SOFTWARE REQUIREMENTS: 
+    python 3.10
+INPUT: 
+    string
+OUTPUT: 
+    string
 '''
+
 # Pedir el nombre y ruta del archivo con la secuecia de DNA para leerlo.
 print("¿Cuál es el nombre y ruta del archivo de DNA para calcular el porcentaje de AT y GC?")
 archivoNombre = input()
