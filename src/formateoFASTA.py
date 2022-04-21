@@ -32,7 +32,7 @@ OUTPUT
     results/dna_sequences.FASTA
 '''
 # Crear el archivo .txt con secuencias a formatear.
-archivoInput = open("data/dna_sequences.txt", "a")
+archivoInput = open("data/dna_sequences.txt", "w")
 
 linea1 = "seq_1   ATCGTACGATCGATCGATCGCTAGACGTATCG\n"
 linea2 = "seq_2   actgatcgacgatcgatcgatcacgact\n"
@@ -51,16 +51,14 @@ secSinFormato = contenido.readlines()
 contenido.close()
 
 # Crear archivo output .FASTA
-archivoOutput = open("results/dna_sequences.FASTA", "a")
+archivoOutput = open("results/dna_sequences.FASTA", "w")
 
 # Editar cada secuencia a formato FASTA y escribir en archivo output.
 for sec in secSinFormato:
     secLista = sec.split("   ")
     secId = secLista[0]
     secuencia = secLista[1]
-    archivoOutput.write("> ")
-    archivoOutput.write(str(secId))
-    archivoOutput.write("\n")
+    archivoOutput.write(f"> {str(secId)}\n")
     archivoOutput.write(str(secuencia.upper().replace("-", "")))
 
 # Cerrar archivo FASTA.
