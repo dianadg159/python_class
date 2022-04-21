@@ -3,7 +3,7 @@ NAME
     Juego piedra, papel o tijera
 
 VERSION
-    1.0
+    1.0.1
 
 AUTOR
     Diana Delgado Gutierrez
@@ -22,44 +22,53 @@ SOFTWARE REQUIREMENTS
     Python 3.10
 
 INPUT
-    data/4_input_adapters.txt
+    archivos: none
+    en pantalla: Elección del usuario (piedra, papel o tijera).
 
 OUTPUT
-    none
+    archivos: none
+    en pantalla: Elección de la computadora y quién ganó.
 
 '''
-# 0. calcular opciones validas.
+# Definir las opciones validas a elegir.
 import random
 accionesPosibles = ["piedra", "papel", "tijera"]
-# input() al usuario para su opción.
+
+# Pedir al usuario para su elección.
 print("Elige una opción (piedra, papel, tijera): ")
 eleccionUsuario = input()
 eleccionUsuario = eleccionUsuario.lower()
-# Función aleatoria de la computadora.
+
+# Elección aleatoria de la computadora.
 eleccionCompu = random.choice(accionesPosibles)
 print(f"La computadora elige: {eleccionCompu}")
-# comparar los resultados
+
+# Comparar los resultados.
 # Los dos elegieron lo mismo:
 if (eleccionCompu == eleccionUsuario):
     print("¡Empate!")
-# tijera gana a papel:
+
+# Papel pierde ante tijera:
 elif ((eleccionCompu == "tijera") & (eleccionUsuario == "papel")):
     print("Perdiste :( ¡Inténtalo de nuevo!")
-# papel pierde ante tijera:
-elif ((eleccionCompu == "tijera") & (eleccionUsuario == "papel")):
+# papel gana ante piedra:
+elif ((eleccionCompu == "piedra") & (eleccionUsuario == "papel")):
     print("¡Ganaste!")
-# piedra gana ante tijera:
+
+# tijera pierde ante piedra:
 elif ((eleccionCompu == "piedra") & (eleccionUsuario == "tijera")):
     print("Perdiste :( ¡Inténtalo de nuevo!")
-# tijera pierde ante piedra:
-elif ((eleccionUsuario == "piedra") & (eleccionCompu == "tijera")):
+# tijera gana ante papel:
+elif ((eleccionCompu == "papel") & (eleccionUsuario == "tijera")):
     print("¡Ganaste!")
-# papel gana ante roca:
+
+# piedra pierde ante papel:
 elif ((eleccionCompu == "papel") & (eleccionUsuario == "piedra")):
-    print("Perdiste :( ¡Inténtalo de nuevo!")
-# roca pierde ante papel:
-elif ((eleccionUsuario == "papel") & (eleccionCompu == "piedra")):
-    print("gana usuario")
+    print("Perdiste : ¡Inténtalo de nuevo!")
+# piedra gana ante tijera:
+elif ((eleccionCompu == "tijera") & (eleccionUsuario == "piedra")):
+    print("¡Ganaste!")
+
 # Si el usuario escribió mal:
 else:
     print("Escribiste mal tu elección, intenta de nuevo.")
