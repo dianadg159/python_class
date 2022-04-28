@@ -1,0 +1,20 @@
+''' 
+import sys
+
+print(f"The script has the name {(sys.argv[0])} ")
+arguments = sys.argv
+print(arguments)
+
+import os # interactuar con el sistema a nivel de unix
+import sys  # librería para leer argumentos
+if len(sys.argv) < 2: #contar el número de elementos
+    # Si los elementos (nombre del porgrama y nombre del directorio) solo es uno, entonces no se escribió el nombre del directorio.
+    print('You need to specify the path to be listed')
+    sys.exit() #salirse del progrma
+input_path = sys.argv[1]
+if not os.path.isdir(input_path):
+    print('The path specified does not exist')
+    sys.exit()
+print('\n'.join(os.listdir(input_path)))
+'''
+# argparser

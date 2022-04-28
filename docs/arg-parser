@@ -1,0 +1,10 @@
+import argparse  # tiene atribuos(propiedades) como descripción.
+from ast import arguments
+text = "This is a test program. It demonstrates how to use the argparse module with a program description."
+# Initiate the parser
+parser = argparse.ArgumentParser(description=text)  # leer los argumentos
+# Namespace objeto definido que tiene el nombre del argumento junto con su valor.
+arguments = parser.parse_args()
+
+print(arguments)
+# Solo imprime los argumentos que ya hemos definido.
