@@ -2,7 +2,7 @@
 NAME: 
     Conteo de A,C,G y T
 VERSION: 
-    1
+    1.1
 AUTOR: 
     Diana Delgado Gutierrez
 DESCRIPTION: 
@@ -22,6 +22,10 @@ OUTPUT:
 # Pedir la secuencia de DNA al usuario.
 print("Introduce una secuencia de adn para saber si cantidad de A, T, C y G: \n")
 dna = input().upper()
+
+# Generar un ValueError cuando no se da una secuencia de ADN.
+if (dna.count('A') == 0 & dna.count('T') == 0 & dna.count('C') == 0 & dna.count('G') == 0):
+    raise ValueError('Lo que introduciste no es una secuencia de ADN.')
 
 # La cantidad de A, T, C y G.
 print(
