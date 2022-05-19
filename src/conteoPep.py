@@ -3,7 +3,7 @@ NAME
     Conteo de péptidos
     
 VERSION
-    1.0
+    1.1
 
 AUTOR
     Diana Delgado
@@ -15,13 +15,14 @@ CATEGORY
     Ejercicio
 
 ARGUMENTS
-    
+    i: str secuencia de aminoácidos
+    a: str aminoácido a buscar
 
 SOFTWARE REQUIREMENTS
     Python 3.10
 
 INPUT
-     Secuencia de un péptido con el aminoacido que busca.
+    Secuencia de un péptido con el aminoacido que busca.
 
 OUTPUT
     Porcentaje del aminoácido en la secuencia.
@@ -44,8 +45,8 @@ parser.add_argument("-a", "--aminoacido",
 argumentos = parser.parse_args()
 
 # asignar variables
-peptido = argumentos.input.upper()
-aa = argumentos.aminoacido.upper()
+peptido = argumentos.input
+aa = argumentos.aminoacido
 
 # Calcular el porcentaje de un aa
 
@@ -63,8 +64,9 @@ def get_aa_percentage(peptido, aa):
             aa_percentage (float): porcentaje de aminoácido que hay
                                     en la secuencia.
     '''
-    length = len(peptido)
-    aa_count = peptido.count(aa)
+    peptidoUpper = peptido.upper()
+    length = len(peptidoUpper)
+    aa_count = peptidoUpper.count(aa.upper())
     aa_percentage = aa_count / length * 100
     return aa_percentage
 
@@ -73,14 +75,24 @@ def get_aa_percentage(peptido, aa):
 print(
     f"El porcentaje de {aa} es: {get_aa_percentage(peptido, aa)}%")
 
-'''try:
+# Pruebas
+try:
     assert get_aa_percentage(peptido="MSRSLLLRFLLFLLLLPPLP", aa="r") == 10.0
+except AssertionError as ex:
+    print("Hubo un error de mayúsculas/minúsculas en aa")
+
+try:
     assert get_aa_percentage(peptido="msrslllrfllfllllpplp", aa="L") == 50.0
 except AssertionError as ex:
-    print("Hubo un error de mayúsculas/minúsculas: " + ex.strerror)
-else:
+    print("Hubo un error de mayúsculas/minúsculas en peptido")
+
+try:
+    assert get_aa_percentage(peptido="MSRSLLLRFLLFLLLLPPLP", aa="Y") == 0.0
+except AssertionError as ex:
+    print("No está el aa que busca.")
+
+try:
     assert get_aa_percentage(
-        peptido="MSRSLLLRFLLFLLLLPPLP", aa="Y") == 0.0, "No está el aa que busca."
-finally:
-    assert get_aa_percentage(
-        peptido="MSRSLLLRFLLFLLLLPPLP", aa="M") == 5.0, "No calcula bien el porcentaje :("'''
+        peptido="MSRSLLLRFLLFLLLLPPLP", aa="M") == 5.0
+except AssertionError as ex:
+    print("No calcula bien el porcentaje :(")
