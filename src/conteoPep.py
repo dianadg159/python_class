@@ -74,25 +74,3 @@ def get_aa_percentage(peptido, aa):
 # output: porcentaje de aminoácido en la secuencia
 print(
     f"El porcentaje de {aa} es: {get_aa_percentage(peptido, aa)}%")
-
-# Pruebas
-try:
-    assert get_aa_percentage(peptido="MSRSLLLRFLLFLLLLPPLP", aa="r") == 10.0
-except AssertionError as ex:
-    print("Hubo un error de mayúsculas/minúsculas en aa")
-
-try:
-    assert get_aa_percentage(peptido="msrslllrfllfllllpplp", aa="L") == 50.0
-except AssertionError as ex:
-    print("Hubo un error de mayúsculas/minúsculas en peptido")
-
-try:
-    assert get_aa_percentage(peptido="MSRSLLLRFLLFLLLLPPLP", aa="Y") == 0.0
-except AssertionError as ex:
-    print("No está el aa que busca.")
-
-try:
-    assert get_aa_percentage(
-        peptido="MSRSLLLRFLLFLLLLPPLP", aa="M") == 5.0
-except AssertionError as ex:
-    print("No calcula bien el porcentaje :(")
