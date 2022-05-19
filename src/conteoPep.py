@@ -51,6 +51,18 @@ aa = argumentos.aminoacido.upper()
 
 
 def get_aa_percentage(peptido, aa):
+    '''
+    Regresa el porcentaje del aminoácido que introdujo el
+    usuario en una seciancia peptídica.
+
+        Parámetros:
+            peptido (string): una secuencia de aminoácidos.
+            aa (string): El aminoácido a buscar su porcentaje
+
+        Returns:
+            aa_percentage (float): porcentaje de aminoácido que hay
+                                    en la secuencia.
+    '''
     length = len(peptido)
     aa_count = peptido.count(aa)
     aa_percentage = aa_count / length * 100
@@ -61,8 +73,7 @@ def get_aa_percentage(peptido, aa):
 print(
     f"El porcentaje de {aa} es: {get_aa_percentage(peptido, aa)}%")
 
-# Pruebas
-try:
+'''try:
     assert get_aa_percentage(peptido="MSRSLLLRFLLFLLLLPPLP", aa="r") == 10.0
     assert get_aa_percentage(peptido="msrslllrfllfllllpplp", aa="L") == 50.0
 except AssertionError as ex:
@@ -72,4 +83,4 @@ else:
         peptido="MSRSLLLRFLLFLLLLPPLP", aa="Y") == 0.0, "No está el aa que busca."
 finally:
     assert get_aa_percentage(
-        peptido="MSRSLLLRFLLFLLLLPPLP", aa="M") == 5.0, "No calcula bien el porcentaje :("
+        peptido="MSRSLLLRFLLFLLLLPPLP", aa="M") == 5.0, "No calcula bien el porcentaje :("'''
