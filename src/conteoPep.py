@@ -3,7 +3,7 @@ NAME
     Conteo de péptidos
     
 VERSION
-    1.0
+    1.1
 
 AUTOR
     Diana Delgado
@@ -15,7 +15,11 @@ CATEGORY
     Ejercicio
 
 ARGUMENTS
-    
+    -h, --help            show this help message and exit
+    -i INPUT, --input INPUT
+                        Secuencia de aminoácidos a calcular
+    -a AMINOACIDO, --aminoacido AMINOACIDO
+                        El aminoacido que etsamos buscando
 
 SOFTWARE REQUIREMENTS
     Python 3.10
@@ -51,6 +55,8 @@ aa = argumentos.aminoacido.upper()
 
 
 def get_aa_percentage(peptido, aa):
+    peptido = peptido.upper()
+    aa = aa.upper()
     length = len(peptido)
     aa_count = peptido.count(aa)
     aa_percentage = aa_count / length * 100
