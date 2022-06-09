@@ -3,7 +3,7 @@ NAME
     Formatear secuencia a Fasta
     
 VERSION
-    1.1
+    1.2
 
 AUTOR
     Diana Delgado Gutiérrez 
@@ -17,41 +17,49 @@ CATEGORY
     FASTA format
 
 USAGE
-    py src/formatoFASTA.py
+    py src/formatoFASTA.py [-h] -i INPUT -o OUTPUT
 
 ARGUMENTS
-    None
+    -h, --help            show this help message and exit
+    -i INPUT, --input INPUT
+                        Path del archivo con secuencia de adn
+    -o OUTPUT, --output OUTPUT
+                        Path del archivo en formato fasta
 
 SOFTWARE REQUIREMENTS
     Python 3.10
 
 INPUT
-    data/dna_sequences.txt
+    data/archivo.txt
 
 OUTPUT
-    results/dna_sequences.FASTA
+    results/archivo.fasta
 '''
-# Crear el archivo .txt con secuencias a formatear.
-archivoInput = open("data/dna_sequences.txt", "w")
+import argparse
 
-linea1 = "seq_1   ATCGTACGATCGATCGATCGCTAGACGTATCG\n"
-linea2 = "seq_2   actgatcgacgatcgatcgatcacgact\n"
-linea3 = "seq_3   ACTGAC-ACTGT-ACTGTA----CATGTG"
+# Pedir datos
+parser = argparse.ArgumentParser(
+    description="Script que pasa un archivo de secuancia adn a formato fasta.")
 
-archivoInput.write(linea1)
-archivoInput.write(linea2)
-archivoInput.write(linea3)
-archivoInput.close()
+parser.add_argument("-i", "--input",
+                    help="Path del archivo con secuencia de adn",
+                    required=True)
+parser.add_argument("-o", "--output",
+                    help="Path del archivo en formato fasta",
+                    required=True)
+
+# Pedir los datos
+args = parser.parse_args()
 
 # Abrir archivo y leer cada línea.
-contenido = open("data/dna_sequences.txt", "r")
+contenido = open(args.input, "r")
 secSinFormato = contenido.readlines()
 
 # Cerrar el archivo.
 contenido.close()
 
 # Crear archivo output .FASTA
-archivoOutput = open("results/dna_sequences.FASTA", "w")
+archivoOutput = open(args.output, "w")
 
 # Editar cada secuencia a formato FASTA y escribir en archivo output.
 for sec in secSinFormato:
