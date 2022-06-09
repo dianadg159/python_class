@@ -15,8 +15,11 @@ CATEGORY
     Ejercicio
 
 ARGUMENTS
-    i: str secuencia de aminoácidos
-    a: str aminoácido a buscar
+    -h, --help            show this help message and exit
+    -i INPUT, --input INPUT
+                        Secuencia de aminoácidos a calcular
+    -a AMINOACIDO, --aminoacido AMINOACIDO
+                        El aminoacido que etsamos buscando
 
 SOFTWARE REQUIREMENTS
     Python 3.10
@@ -64,9 +67,10 @@ def get_aa_percentage(peptido, aa):
             aa_percentage (float): porcentaje de aminoácido que hay
                                     en la secuencia.
     '''
-    peptidoUpper = peptido.upper()
-    length = len(peptidoUpper)
-    aa_count = peptidoUpper.count(aa.upper())
+    peptido = peptido.upper()
+    aa = aa.upper()
+    length = len(peptido)
+    aa_count = peptido.count(aa)
     aa_percentage = aa_count / length * 100
     return aa_percentage
 
