@@ -116,6 +116,7 @@ try:
             print(
                 f"Porcentaje de AT: {porcentajeAT}%\n Porcentaje de CG: {porcentajeGC}%",
                 file=outputFile)
+            outputFile.close()
 
         print(f"Archivo de la secuencia: {args.input}")
         print(
