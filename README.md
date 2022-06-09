@@ -7,8 +7,8 @@ Contiene una estructura estándar con las carpetas data, docs y src.
 ## Estructura
 En la carpeta src existen los scripts o programas.
 En la carpeta docs existen notas de clase. 
-En la carpeta data existen archivos de datos usados.
-En la carpeta resultados existen archivo creados por los scripts.
+En la carpeta data existen archivos de datos para input.
+En la carpeta results existen archivo creados por los scripts.
 ## Instalación
 Se necesita Python 3.10
 ## Licencia
