@@ -6,7 +6,7 @@ VERSION
 
 
 AUTOR
-
+	Diana :)
 
 DESCRIPTION
 
