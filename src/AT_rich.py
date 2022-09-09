@@ -1,37 +1,36 @@
 '''
 NAME
     Regiones ricas en AT
-
 VERSION
     1.1
-    
+
 AUTOR
 	Diana Delgado Gutiérrez
- 
+
 DESCRIPTION
     Recibe como argumento el archivo de secuencia de DNA
     y el tamaño mínimo de la región rica en AT's
     a buscar.
-    
+
 CATEGORY
     DNA
-    
+
 USAGE
     Python .\src\rich_at.py [-h] -f path/to/file [-s SEARCH]
     python .\src\AT_rich.py -f data/dna.seq -s 5
-    
+
 ARGUMENTS
     -h, --help
     -f, --file  archivo con secuencia de ADN a leer.
     -s [número] tamaño de la región rica en AT.
-    
+
 SOFTWARE REQUIREMENTS
     Python 3.10
-    
+
 INPUT
     Archivo con una secuencia de ADN.
     Longitud en bases de la region mínima de AT.
-    
+
 OUTPUT
     Posición de las regigones ricas en AT.
 '''
@@ -57,7 +56,7 @@ size = argumentos.size
 
 # Abrir el archivo y leerlo.
 dna = open(file, "r")
-seqdna = dna.read().upper()
+seqdna = dna.read().rstrip('\n').upper()
 
 # Checar que la secuencia sea ADN
 
@@ -74,10 +73,11 @@ def revise(seqdna):
             True: Hubo errores.
     '''
     errores = re.finditer("[^ATGC]+", seqdna)
-    if (errores):
+    num_errores = len([*re.finditer("[^ATGC]+", seqdna)])
+    if num_errores > 0:
         # Imprimir los errores.
         for error in errores:
-            print("Se encuentran errores en: " + str(error.span()))
+            print("Se encuentraron caracteres invalidos en la secuencia: " + error.group() + " en la posicion: " + str(error.span()))
         return(1)
     else:
         return(0)
@@ -87,17 +87,16 @@ def revise(seqdna):
 def rich_at_regions(seqdna, size):
     '''
     Encuentra regiones ricas en AT.
-    Default a 13, el mínimo para decir que una region es 
+    Default a 13, el mínimo para decir que una region es
     rica en AT.
         Parameters:
             seqdna (str): Secuencia de adn del archivo
                             introducido por usuario.
-            size (str): Numero de longitud mínima de 
+            size (str): Numero de longitud mínima de
                             región rica en AT.
     '''
     at_rich = re.finditer("(A+|T+){" + size + ",}", seqdna, re.IGNORECASE)
-    matches = len(
-        [*re.finditer("(A+|T+){" + size + ",}", seqdna, re.IGNORECASE)])
+    matches = len([*re.finditer("(A+|T+){" + size + ",}", seqdna, re.IGNORECASE)])
     if matches:
         for region in at_rich:
             at_seq = region.group()
@@ -108,5 +107,6 @@ def rich_at_regions(seqdna, size):
 
 
 # Llamar funciones.
-revise(seqdna)
-rich_at_regions(seqdna, size)
+findError = revise(seqdna)
+if findError == 0:
+    rich_at_regions(seqdna, size)
