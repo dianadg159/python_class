@@ -3,7 +3,7 @@ NAME:
     RNA to Protein
     
 VERSION:
-    1.1
+    1.2
     
 AUTOR: 
     Diana Delgado Gutierrez
@@ -44,12 +44,10 @@ argumentos = parser.parse_args()
 rna = argumentos.string.upper()
 
 # Verificar si no es secuencia de RNA
-if re.search(f"[GCATU]", rna):
-    rna = rna.replace('U', 'T')
-else:
+if re.search(f"[^GCATU]", rna):
     print("Por favor introduce vuelve a checar que tu secuencia sea RNA o DNA")
     quit()
-
+rna = rna.replace('U', 'T')
 
 # Hacer un diccionario
 gencode = {
@@ -69,8 +67,10 @@ gencode = {
 
 # Hacer una lista de codones.
 codones = [rna[i:i + 3] for i in range(0, len(rna), 3)]
+
 # LLamar al diccionario
 peptido = [gencode.get(codon) for codon in codones]
 peptido.remove("_")
+
 # Imprimir a pantalla el péptido
 print("La secuencia de aa es: " + "".join(peptido))
