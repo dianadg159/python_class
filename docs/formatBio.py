@@ -22,15 +22,21 @@ for seq in SeqIO.parse(archivo, "fasta"):
         print(len(seq.seq))
 
 
-print("¿Cuál es el mínimo de score?")
-qvalue = input()
-qlectures = 0
-for record in SeqIO.parse("data/sample.fastq", "fastq"):
-    qscores = record.letter_annotations["phred_quality"]
-    prom = np.mean(qscores)
-    if str(prom) >= qvalue:
-        qlectures += 1
-print(qlectures)
+def qualityRecords(archivo, umbral):
+    qlectures = 0
+    for record in SeqIO.parse(archivo, "fastq"):
+        qscores = record.letter_annotations["phred_quality"]
+        qscores.sort()
+        if qscores[0] >= umbral:
+            qlectures += 1
+            with open("qualityIds", "a") as ids:
+                ids.write(record.id + "\n")
+                ids.write(record.seq + "\n")
+                ids.close()
+    return("Número de ids con bases de calidad" + str(qlectures))
+
+
+qualityRecords("data/sample.fastq", 36)
 '''
 for i in qscores:
     if str(i) >= qvalue:
