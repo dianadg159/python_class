@@ -50,13 +50,18 @@ def qualityRecords(archivo, umbral):
         Returns:
             qlectures (int): Número de secuecias que pasan el umbral. 
     '''
+    # Iniciar un contador
     qlectures = 0
+    # ciclo para parsear las secuencias
     for record in SeqIO.parse(archivo, "fastq"):
+        # acomodar de menor a mayor los Q values
         qscores = record.letter_annotations["phred_quality"]
         qscores.sort()
         if qscores[0] >= umbral:
+            # contar las secuencias donde todos sus nt pasen el umbral
             qlectures += 1
             with open("data/qualityIds", "a") as ids:
+                # escribir el id y la secuencia
                 ids.write(record.id + "\n")
                 ids.write(str(record.seq) + "\n")
                 ids.close()
