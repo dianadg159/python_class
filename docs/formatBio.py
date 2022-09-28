@@ -29,14 +29,14 @@ def qualityRecords(archivo, umbral):
         qscores.sort()
         if qscores[0] >= umbral:
             qlectures += 1
-            with open("qualityIds", "a") as ids:
+            with open("data/qualityIds", "a") as ids:
                 ids.write(record.id + "\n")
-                ids.write(record.seq + "\n")
+                ids.write(str(record.seq) + "\n")
                 ids.close()
     return("Número de ids con bases de calidad" + str(qlectures))
 
 
-qualityRecords("data/sample.fastq", 36)
+qualityRecords("data/sample.fastq", 31)
 '''
 for i in qscores:
     if str(i) >= qvalue:
