@@ -3,7 +3,7 @@ NAME
     Fasta to codons
     
 VERSION
-    1.0
+    1.1
 
 AUTOR
 	Diana :)
@@ -53,6 +53,8 @@ for id in id_dict:
         # Separar codones
         codones = [str(dict[id].seq[i:i + 3])
                    for i in range(start, len(str(dict[id].seq)), 3)]
+        if (len(dict[id].seq[start:]) % 3) != 0:
+            codones.pop()
         # imprimirlos codones separados
         print(f">{id}")
         print(*codones)
