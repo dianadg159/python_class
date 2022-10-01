@@ -25,14 +25,11 @@ SOFTWARE REQUIREMENTS
     Python 3.10
 
 INPUT
-
- [files or directories used to run the program and formats]
+    none
 
 OUTPUT
-
-[file names and formats]
+    En pantalla: Imprimir el peptido mas grande encontrado.
 '''
-
 #! /usr/bin/env python3
 # Importar librería
 from Bio.Seq import MutableSeq, Seq
@@ -70,8 +67,10 @@ def traduccion(secuencia, posicion):
 
 
 def longitud(tupla):
+    # dividir la tupla
     pept = tupla[0]
     max_length = tupla[1]
+    # buscar el peptido más largo
     for j in range(len(pept)):
         if len(pept[j]) == max_length:
             print("Cadena con mayor longitud:")
