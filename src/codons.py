@@ -3,7 +3,7 @@ NAME
     Fasta to codons
 
 VERSION
-    2.0
+    2.1
 
 AUTOR
 	Diana :)
