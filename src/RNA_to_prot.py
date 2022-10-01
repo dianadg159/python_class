@@ -41,13 +41,12 @@ parser.add_argument("-s", "--string",
 
 # Asignar variables al input.
 argumentos = parser.parse_args()
-rna = argumentos.string.upper()
+rna = argumentos.string.upper().replace('U', 'T')
 
 # Verificar si no es secuencia de RNA
 if re.search(f"[^GCATU]", rna):
     print("Por favor introduce vuelve a checar que tu secuencia sea RNA o DNA")
     quit()
-rna = rna.replace('U', 'T')
 
 # Hacer un diccionario
 gencode = {
