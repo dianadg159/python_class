@@ -20,13 +20,14 @@ USAGE
 
 ARGUMENTS
     -u --umbral: número que determine el umbral de calidad.
-    -f --file: path del archivo fastq
+    -f --file: path/to/file fastq
 
 SOFTWARE REQUIREMENTS
 Python 3.10
 
 INPUT
-    Archivo del usuario
+    Umbral del usuario
+    path/to/file fasta
 
 OUTPUT
     ./data/qualityIds
@@ -34,6 +35,22 @@ OUTPUT
 #! /usr/bin/env python3
 # Importar librería
 from Bio import SeqIO
+import argparse
+
+# input
+parser = argparse.ArgumentParser(
+    description="Script que regresa las secuencias de un fastq que superan un umbral.")
+
+parser.add_argument("-f", "--file",
+                    help="path/to/file de fastq",
+                    required=True)
+parser.add_argument("-u", "--umbral",
+                    type=int,
+                    help="umbral que tiene que superar",
+                    required=True)
+
+# Asignar variables
+argumentos = parser.parse_args()
 
 # función para el archivo de ids de calidad
 
@@ -60,14 +77,15 @@ def qualityRecords(archivo, umbral):
         if qscores[0] >= umbral:
             # contar las secuencias donde todos sus nt pasen el umbral
             qlectures += 1
-            with open("data/qualityIds", "a") as ids:
+            with open("results/qualityIds", "a") as ids:
                 # escribir el id y la secuencia
                 ids.write(record.id + "\n")
                 ids.write(str(record.seq) + "\n")
+                ids.write("\n")
                 ids.close()
     return(str(qlectures))
 
 
-noRecords = qualityRecords("data/sample.fastq", 31)
+noRecords = qualityRecords(argumentos.input, argumentos.umbral)
 print("El número de secuencias que pasan el umbral: %s" % (noRecords))
-print("Las secuencias están en el archivo data/qualiyIds")
+print("Las secuencias están en el archivo results/qualiyId")
