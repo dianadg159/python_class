@@ -3,7 +3,7 @@ NAME
  Handling GenBank archive
 
 VERSION
-    1.0
+    2.0
 
 AUTOR
 	Diana :)
@@ -19,7 +19,7 @@ USAGE
     py .\src\genBank.py
 
 ARGUMENTS
-    -g --genes: numero de gen que quiere el usuario.
+    -g --genes: Nombre de gen que quiere el usuario.
     -f --file: path/to/file genbank
 
 SOFTWARE REQUIREMENTS
@@ -27,7 +27,7 @@ SOFTWARE REQUIREMENTS
 
 INPUT
     Umbral del usuario
-    path/to/file fasta
+    path/to/file genbank
 
 OUTPUT
     en pantalla:
@@ -35,7 +35,7 @@ OUTPUT
         Fecha: 
         Country: 
         Isolate: 
-        [geneID/prot/ID]
+        Gen:
         DNA: 
         RNA: 
         Prot: 
@@ -53,8 +53,8 @@ parser.add_argument("-f", "--file",
                     help="path/to/file de genebank",
                     required=True)
 parser.add_argument("-g", "--genes",
-                    type=int,
-                    help="numero de gen que quiere la secuencia (1:11)",
+                    nargs='*',
+                    help="Nombre(s) de(l) gen(es) del que quiere la secuencia (G, L, M, P, N, L)",
                     required=True)
 
 # Asignar variables
@@ -69,7 +69,7 @@ def resumen(archivo, genes):
         Parameters:
             archivo (str): Path del archivo genbank
             proporcionado por el usuario.
-            genes (int): Número de gen deseado por el usuario.
+            genes (list): Nombres de genes deseados por el usuario.
         Returns:
             none. 
     '''
@@ -84,15 +84,32 @@ def resumen(archivo, genes):
         isolate = gb_record.features[0].qualifiers['isolation_source']
         print(f"Isolate: {isolate[0]}")
         # Genes
-        gene_id = gb_record.features[genes].qualifiers['db_xref']
-        print(gene_id[0])
-        # Secuencias
-        start = gb_record.features[genes].location.nofuzzy_start
-        #end = gb_record.features[2].location.nofuzzy_end
-        gene_seq = gb_record.seq[start:start + 15]
-        print(f"DNA: {gene_seq}")
-        print(f"RNA: {gene_seq.complement()}")
-        print(f"Prot: {gene_seq.translate()}")
+        for gen in genes:
+            # Obtener los features
+            for i in gb_record.features:
+                # Obtener los genes
+                if i.type == "gene":
+                    # Buscar los genes que pide el usuario
+                    if i.qualifiers["gene"] == list(gen):
+                        # Obtener su inicio de secuencia
+                        start = i.location.nofuzzy_start
+                        break
+                    else:
+                        # Si no existe el gen marcar la variable
+                        start = 0
+            if not(start):
+                # Imprimir error
+                print("No existe gen con el nombre " + gen)
+                # Continuar con el siguiente gen
+                continue
+            # Imprimir datos del gen
+            print("Gen: " + gen)
+            #start = gb_record.features[genes].location.nofuzzy_start
+            #end = gb_record.features[2].location.nofuzzy_end
+            gene_seq = gb_record.seq[start:start + 15]
+            print(f"DNA: {gene_seq}")
+            print(f"RNA: {gene_seq.complement()}")
+            print(f"Prot: {gene_seq.translate()}")
 
 
 resumen(argumentos.file, argumentos.genes)
