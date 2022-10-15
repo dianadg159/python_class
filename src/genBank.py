@@ -20,14 +20,14 @@ USAGE
 
 ARGUMENTS
     -g --genes: Nombre de gen que quiere el usuario.
-    -f --file: path/to/file genbank
+    -f --file: path/to/file genbank (./data/virus.gb)
 
 SOFTWARE REQUIREMENTS
     Python 3.10
 
 INPUT
     Umbral del usuario
-    path/to/file genbank
+    path/to/file genbank (./data/virus.gb)
 
 OUTPUT
     en pantalla:
@@ -65,7 +65,8 @@ argumentos = parser.parse_args()
 
 def resumen(archivo, genes):
     '''
-    Script que regresa features y genes de un archivo genbank.
+    Regresa features y genes de un archivo genbank en 
+    standard output.
         Parameters:
             archivo (str): Path del archivo genbank
             proporcionado por el usuario.
@@ -112,4 +113,5 @@ def resumen(archivo, genes):
             print(f"Prot: {gene_seq.translate()}")
 
 
+# LLamar la funcion
 resumen(argumentos.file, argumentos.genes)
