@@ -1,3 +1,35 @@
+'''
+NAME
+ Entrez
+
+VERSION
+    2.0
+
+AUTOR
+	Diana :)
+
+DESCRIPTION
+    Programas 
+
+CATEGORY
+    NCBI
+
+USAGE
+    py .\src\NCBI.py
+
+ARGUMENTS
+    -t --termino: Organismo y genes a asociar.
+
+SOFTWARE REQUIREMENTS
+    Python 3.10
+
+INPUT
+    Organismo con sus genes asociados
+
+OUTPUT
+    Diccionarios con los IDs de cada base de datos donde 
+    encontró informacion
+'''
 from Bio import Entrez
 import argparse
 
@@ -55,6 +87,7 @@ def buscar_db(termino):
             DbName = db["DbName"]
         # acceder a la lista de ids
         IdList = Entrez.read(Entrez.esearch(db=DbName, term=termino))["IdList"]
+        # Juntar la lista de los ids
         idsdb[DbName] = IdList
     return(idsdb)
 
